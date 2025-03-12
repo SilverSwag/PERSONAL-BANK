@@ -18,7 +18,7 @@ int security_pin(int pin){
                 cout<<"Select Service"<<endl<<endl;
                 cout<<"Enter [1] to show balance"<<endl;
                 cout<<"Enter [2] to Credit into account"<<endl;
-                cout<<"Enter [3] to Debit from account"<<endl;
+                cout<<"Enter [3] to Debit from account into ksh account"<<endl;
                 cout<<"Enter [4] to exit"<<endl<<endl;
             }else{
                 cout<<"Incorrect Pin!"<<endl;
@@ -33,8 +33,8 @@ int security_pin(int pin){
     return 0; // Return 0 or any other value as needed
 }
 float available_balance = 1000;
-float dollar_balance = 0;
-float ksh_balance = 0;
+float dollar_balance = 876.87;
+float ksh_balance = 54789.65;
 float exchange_rate = 133.89;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
@@ -54,13 +54,14 @@ int credit(){
 	}else{
 		dollar_balance += credit_amount;
 		available_balance -= credit_amount;
-		cout<<"Request to credit $"<<credit_amount<<" completed"<<endl<<endl;
+		cout<<"Request to credit $"<<credit_amount<<" completed"<<endl;
+		cout<<"Current dollar balance: $"<<dollar_balance<<endl<<endl;
 	}
 }
 int debit(){
 	cout<<fixed<<setprecision(2);
 	float debit_amount;
-	cout<<"Enter amount between $1.00 to $"<<dollar_balance<<" to Debit from account: ";
+	cout<<"Enter amount between $1.00 to $"<<dollar_balance<<" to credit ksh account: ";
 	cin>>debit_amount;
 	if(debit_amount > dollar_balance){
 		cout<<"Insufficient balance!"<<endl;
@@ -69,12 +70,14 @@ int debit(){
 	}else{
 		ksh_balance += (debit_amount * exchange_rate);
 		dollar_balance -= debit_amount;
-		cout<<"Request to debit $"<<debit_amount<<" completed"<<endl<<endl;
+		cout<<"Request to credit $"<<debit_amount<<" into ksh account completed"<<endl;
+		cout<<"Exchange rate: $1 = KSH"<<exchange_rate<<endl;
+		cout<<"Current ksh balance: KSH"<<ksh_balance<<endl<<endl;
 	}
 }
 int main(int argc, char** argv){
 	cout<<"2025 PERSONAL BANK"<<endl;
-	cout<<"Version 1.0.0"<<endl<<endl;
+	cout<<"Version 1.1.0"<<endl<<endl;
 	cout<<"ACCOUNT NAME: IAN OMWOYO OTUKE"<<endl;
 	security_pin(5643);
 	int choice;
