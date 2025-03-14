@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cctype>
 using namespace std;
+string name;
 int security_pin(int pin){
     bool if_running = true;
     int pin_input = 0;
@@ -19,8 +20,11 @@ int security_pin(int pin){
             cout<<endl; // Move to the next line after Enter
             if(pin_input == pin){
                 if_running = false;
+                transform(name.begin(), name.end(), name.begin(), ::toupper);
+                cout<<"Welcome "<<name<<", this is your personal bank app account."<<endl;
+                cout<<"Money should be credited into dollar wallet before it can be converted and deposited into the ksh wallet."<<endl;
+                cout<<"Both Wallet will reset back to 0.00 balance after exiting and the available balance will reset back to the amount it was before exiting."<<endl<<endl;
                 cout<<"Select Service"<<endl<<endl;
-                cout<<"(Money should be credited into dollar wallet before it can be converted and deposited into the ksh wallet)"<<endl;
                 cout<<"Enter [1] to show balance"<<endl;
                 cout<<"Enter [2] to Credit into dollar wallet"<<endl;
                 cout<<"Enter [3] to Debit dollar wallet and credit ksh wallet"<<endl;
@@ -84,7 +88,7 @@ int debit(){
 int m_pesa(){
     string number;
     float amount;
-    cout<<"Enter your phone number: +254 ";
+    cout<<"Enter your phone number (Double check if you have entered the intended number before proceeding): +254 ";
     cin>>number;
     if(number.length() != 9 || !isdigit(number[0]) || !isdigit(number[1]) || !isdigit(number[2]) || 
         !isdigit(number[3]) || !isdigit(number[4]) || !isdigit(number[5]) || 
@@ -115,8 +119,7 @@ int m_pesa(){
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 3.0.0"<<endl<<endl;
-	string name;
+	cout<<"Version 3.1.0"<<endl<<endl;
 	cout<<"Enter your name: ";
 	getline(cin, name);
 	transform(name.begin(), name.end(), name.begin(), ::toupper);
