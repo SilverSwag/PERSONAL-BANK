@@ -42,10 +42,10 @@ int security_pin(int pin){
     }
     return 0; // Return 0 or any other value as needed
 }
-float available_balance = 7500;
+float available_balance = 350.00;
 float dollar_balance = 0.00;
 float ksh_balance = 0.00;
-float exchange_rate = 129;
+float exchange_rate = 129.00;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
 	cout<<"Available balance: $"<<available_balance<<endl;
@@ -78,10 +78,12 @@ int debit(){
 	}else if(debit_amount <= 0){
 		cout<<"ERROR! Invalid input!"<<endl;
 	}else{
-		ksh_balance += (debit_amount * exchange_rate);
+		float ksh = (debit_amount * exchange_rate);
+		ksh_balance += ksh;
 		dollar_balance -= debit_amount;
 		cout<<"Request to credit $"<<debit_amount<<" into ksh wallet completed"<<endl;
 		cout<<"Exchange rate: $1.00 = KSH"<<exchange_rate<<endl;
+		cout<<"$"<<debit_amount<<" = ksh"<<ksh<<endl;
 		cout<<"Current ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
 	}
 }
@@ -99,7 +101,7 @@ int m_pesa(){
     else{
     	cout<<fixed<<setprecision(2);
         cout<<"Available balance to withdraw: KSH"<<ksh_balance<<endl;
-        cout<<"Enter amount between ksh100.00 to ksh250,000.00: KSH";
+        cout<<"Enter amount between a MINIMUM OF ksh100.00 to ksh"<<ksh_balance<<" (MAXIMUM IS ksh250,000.00): KSH";
         cin>>amount;
         if(amount <= 0){
             cout<<"ERROR! Invalid input!"<<endl;
@@ -119,7 +121,7 @@ int m_pesa(){
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 3.1.0"<<endl<<endl;
+	cout<<"Version 3.2.0"<<endl<<endl;
 	cout<<"Enter your name: ";
 	getline(cin, name);
 	transform(name.begin(), name.end(), name.begin(), ::toupper);

@@ -33,20 +33,20 @@ UnitCount=1
 
 [VersionInfo]
 Major=3
-Minor=1
+Minor=2
 Release=0
-Build=0
+Build=1
 LanguageID=1033
 CharsetID=1252
-CompanyName=SILVERSWAG
-FileVersion=3.1.0.0
+CompanyName=PERSONAL BANK
+FileVersion=3.2.0.1
 FileDescription=Developed by Ian Omwoyo
 InternalName=Personal Bank
 LegalCopyright=©2025 Personal Bank
-LegalTrademarks=
+LegalTrademarks=All rights reserved
 OriginalFilename=Personal Bank
 ProductName=Personal Bank
-ProductVersion=3.1.0.0
+ProductVersion=3.2.0.1
 AutoIncBuildNr=1
 SyncProduct=1
 
