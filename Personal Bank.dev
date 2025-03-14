@@ -32,21 +32,21 @@ CompilerSettings=0000000000000000000000000
 UnitCount=1
 
 [VersionInfo]
-Major=2
+Major=3
 Minor=0
 Release=0
-Build=23
+Build=2
 LanguageID=1033
 CharsetID=1252
 CompanyName=SILVERSWAG
-FileVersion=2.0.0.23
+FileVersion=3.0.0.2
 FileDescription=Developed by Ian Omwoyo
 InternalName=Personal Bank
 LegalCopyright=©2025 Personal Bank
 LegalTrademarks=
 OriginalFilename=Personal Bank
 ProductName=Personal Bank
-ProductVersion=2.0.0.23
+ProductVersion=3.0.0.2
 AutoIncBuildNr=1
 SyncProduct=1
 
