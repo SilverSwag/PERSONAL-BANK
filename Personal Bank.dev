@@ -34,19 +34,19 @@ UnitCount=1
 [VersionInfo]
 Major=3
 Minor=2
-Release=0
-Build=1
+Release=1
+Build=86
 LanguageID=1033
 CharsetID=1252
 CompanyName=PERSONAL BANK
-FileVersion=3.2.0.1
+FileVersion=3.2.1.86
 FileDescription=Developed by Ian Omwoyo
 InternalName=Personal Bank
 LegalCopyright=©2025 Personal Bank
 LegalTrademarks=All rights reserved
 OriginalFilename=Personal Bank
 ProductName=Personal Bank
-ProductVersion=3.2.0.1
+ProductVersion=3.2.1.86
 AutoIncBuildNr=1
 SyncProduct=1
 

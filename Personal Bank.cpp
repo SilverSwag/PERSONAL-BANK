@@ -4,27 +4,28 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 string name;
 int security_pin(int pin){
     bool if_running = true;
     int pin_input = 0;
     int digit;
-    cout<<"Contact the developer for the pin."<<endl;
+    cout<<". Contact the developer for the pin."<<endl;
     cout<<"Enter pin: ";
     while(if_running){
-        // Read a character without echoing it
-        digit = _getch(); // Use _getch() to get a character without displaying it
-        // Check if the user pressed Enter (ASCII 13)
+        digit = _getch();
         if(digit == 13){
-            cout<<endl; // Move to the next line after Enter
+            cout<<endl; 
             if(pin_input == pin){
                 if_running = false;
-                transform(name.begin(), name.end(), name.begin(), ::toupper);
-                cout<<"Welcome "<<name<<", this is your personal bank app account."<<endl;
+                cout<<"Hello there "<<name<<", this is your personal money app developed with love by Ian Omwoyo."<<endl;
                 cout<<"Money should be credited into dollar wallet before it can be converted and deposited into the ksh wallet."<<endl;
-                cout<<"Both Wallet will reset back to 0.00 balance after exiting and the available balance will reset back to the amount it was before exiting."<<endl<<endl;
-                cout<<"Select Service"<<endl<<endl;
+                cout<<"Both Wallet will reset back to 0.00 balance after exiting."<<endl;
+                cout<<"The available balance is dynamic, the balance changes often."<<endl<<endl;
+                cout<<"SELECT SERVICE"<<endl<<endl;
                 cout<<"Enter [1] to show balance"<<endl;
                 cout<<"Enter [2] to Credit into dollar wallet"<<endl;
                 cout<<"Enter [3] to Debit dollar wallet and credit ksh wallet"<<endl;
@@ -32,25 +33,43 @@ int security_pin(int pin){
                 cout<<"Enter [5] to Exit"<<endl<<endl;
             }else{
                 cout<<"ERROR! Incorrect Pin!"<<endl;
-                pin_input = 0; // Reset pin_input for the next attempt
-                cout<<"Enter pin: "; // Prompt again
+                pin_input = 0;
+                cout<<"Enter pin: ";
             }
-        }else if(digit >= '0' && digit <= '9'){ // Check if the input is a digit
-            pin_input = pin_input*10+(digit-'0'); // Build the pin_input number
-            cout<<"*"; // Print an asterisk for each digit entered
+        }else if(digit >= '0' && digit <= '9'){ 
+            pin_input = pin_input*10+(digit-'0');
+            cout<<"*";
         }
     }
-    return 0; // Return 0 or any other value as needed
+    return 0;
 }
-float available_balance = 350.00;
+float getRandomFloatFromArray(const float arr[], int size) {
+  if (size <= 0) {
+    return 0.0f;
+  }
+  static bool seeded = false;
+  if (!seeded) {
+    std::srand(static_cast<unsigned int>(std::time(0)));
+    seeded = true;
+  }
+  int randomIndex = std::rand() % size;
+  return arr[randomIndex];
+}
+float myArray[] = {350.5f, 30.2f, 78100.8f, 0.0f, 5.9f,2.5f,100000.0f,34.0f,98.0f,189.89f,62.0f,123.6f,77.0f,21.0f,111.3f,46.0f,55.0f,86.5f,9.9f,42000.6f,67900.0f,54.5f};
+int arraySize = sizeof(myArray) / sizeof(myArray[0]);
+float available_balance = getRandomFloatFromArray(myArray, arraySize);
 float dollar_balance = 0.00;
 float ksh_balance = 0.00;
 float exchange_rate = 129.00;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
-	cout<<"Available balance: $"<<available_balance<<endl;
-	cout<<"Dollar wallet balance: $"<<dollar_balance<<endl;
-	cout<<"Ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
+	cout<<"Available balance (Dynamic): $"<<available_balance<<endl;
+	if(available_balance == 0){
+		cout<<"Ooopss, no available balance. Come back next time "<<name<<endl<<endl;
+	}else{
+		cout<<"Dollar wallet balance: $"<<dollar_balance<<endl;
+	    cout<<"Ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
+	}
 }
 int credit(){
 	cout<<fixed<<setprecision(2);
@@ -97,8 +116,7 @@ int m_pesa(){
         !isdigit(number[6]) || !isdigit(number[7]) || !isdigit(number[8]))
 	{
         cout<<"ERROR! Invalid phone number!"<<endl;
-	}
-    else{
+	}else{
     	cout<<fixed<<setprecision(2);
         cout<<"Available balance to withdraw: KSH"<<ksh_balance<<endl;
         cout<<"Enter amount between a MINIMUM OF ksh100.00 to ksh"<<ksh_balance<<" (MAXIMUM IS ksh250,000.00): KSH";
@@ -115,33 +133,42 @@ int m_pesa(){
         }else{
             ksh_balance -= amount;
             cout<<"Request to withdraw KSH"<<amount<<" to M-Pesa account +254 "<<number<<" completed"<<endl;
+            cout<<"Your request will be fulfilled within 6 to 10 days. Thank you for your patience "<<name<<"."<<endl;
             cout<<"Current ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
         }
     }
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 3.2.0"<<endl<<endl;
-	cout<<"Enter your name: ";
-	getline(cin, name);
+	cout<<"Version 4.2.2"<<endl<<endl;
+	bool if_name = true;
+	while(if_name){
+		cout<<"Enter your name: ";
+	    getline(cin, name);
+		if(name == ""){
+			cout<<"ERROR! name needed!"<<endl;
+		}else{
+			if_name = false;
+		}
+	}
 	transform(name.begin(), name.end(), name.begin(), ::toupper);
-	cout<<"ACCOUNT NAME: "<<name<<endl;
+	cout<<"WELCOME "<<name;
 	security_pin(5643);
-	int choice;
+	string choice;
 	bool if_running = true;
 	while(if_running){
 		cout<<"Select Option: ";
-		cin>>choice;
-		if(choice == 1){
+	    cin>>choice;
+	    if(choice == "1"){
 			showbalance();
-		}else if(choice == 2){
+		}else if(choice == "2"){
 		    credit();
-		}else if(choice == 3){
+		}else if(choice == "3"){
 			debit();
-		}else if(choice == 4){
+		}else if(choice == "4"){
 			m_pesa();
-		}else if(choice == 5){
-			if_running = false;
+		}else if(choice == "5"){
+		    if_running = false;
 		}
 		else{
 			cout<<"ERROR! Invalid option!"<<endl;
