@@ -26,10 +26,10 @@ int security_pin(int pin){
                 cout<<"Both Wallet will reset back to 0.00 balance after exiting."<<endl;
                 cout<<"The available balance is dynamic, the balance changes often."<<endl<<endl;
                 cout<<"SELECT SERVICE"<<endl<<endl;
-                cout<<"Enter [1] to show balance"<<endl;
+                cout<<"Enter [1] to Show balance"<<endl;
                 cout<<"Enter [2] to Credit into dollar wallet"<<endl;
                 cout<<"Enter [3] to Debit dollar wallet and credit ksh wallet"<<endl;
-                cout<<"Enter [4] to withdraw to M-pesa account"<<endl;
+                cout<<"Enter [4] to Withdraw to M-pesa account"<<endl;
                 cout<<"Enter [5] to Exit"<<endl<<endl;
             }else{
                 cout<<"ERROR! Incorrect Pin!"<<endl;
@@ -63,18 +63,18 @@ float ksh_balance = 0.00;
 float exchange_rate = 129.00;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
-	cout<<"Available balance (Dynamic): $"<<available_balance<<endl;
+	cout<<"Available balance (Dynamic): USD "<<available_balance<<endl;
 	if(available_balance == 0){
 		cout<<"Ooopss, no available balance. Come back next time "<<name<<endl<<endl;
 	}else{
-		cout<<"Dollar wallet balance: $"<<dollar_balance<<endl;
-	    cout<<"Ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
+		cout<<"Dollar wallet balance: USD "<<dollar_balance<<endl;
+	    cout<<"Ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
 	}
 }
 int credit(){
 	cout<<fixed<<setprecision(2);
 	float credit_amount;
-	cout<<"Enter amount between $1.00 to $"<<available_balance<<" to credit dollar wallet: ";
+	cout<<"Enter amount between USD 1.00 to USD "<<available_balance<<" to credit dollar wallet: USD ";
 	cin>>credit_amount;
 	if(credit_amount > available_balance){
 		cout<<"ERROR! Insufficient funds!"<<endl;
@@ -83,14 +83,14 @@ int credit(){
 	}else{
 		dollar_balance += credit_amount;
 		available_balance -= credit_amount;
-		cout<<"Request to credit $"<<credit_amount<<" into dollar wallet completed"<<endl;
-		cout<<"Current dollar wallet balance: $"<<dollar_balance<<endl<<endl;
+		cout<<"Request to credit USD "<<credit_amount<<" into dollar wallet completed"<<endl;
+		cout<<"Current dollar wallet balance: USD "<<dollar_balance<<endl<<endl;
 	}
 }
 int debit(){
 	cout<<fixed<<setprecision(2);
 	float debit_amount;
-	cout<<"Enter amount between $1.00 to $"<<dollar_balance<<" to credit ksh wallet: ";
+	cout<<"Enter amount between USD 1.00 to USD "<<dollar_balance<<" to credit ksh wallet: USD ";
 	cin>>debit_amount;
 	if(debit_amount > dollar_balance){
 		cout<<"ERROR! Insufficient funds!"<<endl;
@@ -100,16 +100,16 @@ int debit(){
 		float ksh = (debit_amount * exchange_rate);
 		ksh_balance += ksh;
 		dollar_balance -= debit_amount;
-		cout<<"Request to credit $"<<debit_amount<<" into ksh wallet completed"<<endl;
-		cout<<"Exchange rate: $1.00 = KSH"<<exchange_rate<<endl;
-		cout<<"$"<<debit_amount<<" = ksh"<<ksh<<endl;
-		cout<<"Current ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
+		cout<<"Request to credit USD "<<debit_amount<<" into ksh wallet completed"<<endl;
+		cout<<"Exchange rate: USD 1.00 = KSH "<<exchange_rate<<endl;
+		cout<<"USD "<<debit_amount<<" = KSH "<<ksh<<endl;
+		cout<<"Current ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
 	}
 }
 int m_pesa(){
     string number;
     float amount;
-    cout<<"Enter your phone number (Double check if you have entered the intended number before proceeding): +254 ";
+    cout<<"Enter your phone number (Double check if you have entered the intended number before proceeding): Kenya +254 ";
     cin>>number;
     if(number.length() != 9 || !isdigit(number[0]) || !isdigit(number[1]) || !isdigit(number[2]) || 
         !isdigit(number[3]) || !isdigit(number[4]) || !isdigit(number[5]) || 
@@ -118,29 +118,29 @@ int m_pesa(){
         cout<<"ERROR! Invalid phone number!"<<endl;
 	}else{
     	cout<<fixed<<setprecision(2);
-        cout<<"Available balance to withdraw: KSH"<<ksh_balance<<endl;
-        cout<<"Enter amount between a MINIMUM OF ksh100.00 to ksh"<<ksh_balance<<" (MAXIMUM IS ksh250,000.00): KSH";
+        cout<<"Available balance to withdraw: KSH "<<ksh_balance<<endl;
+        cout<<"Enter amount between a MINIMUM OF KSH 100.00 to KSH "<<ksh_balance<<" (MAXIMUM IS KSH 250,000.00): KSH ";
         cin>>amount;
         if(amount <= 0){
             cout<<"ERROR! Invalid input!"<<endl;
         }else if(amount >= 1 && amount < 100){
-        	cout<<"ERROR! Minimum amount to withdraw is ksh100.00"<<endl;
+        	cout<<"ERROR! Minimum amount to withdraw is KSH 100.00"<<endl;
 		}else if(amount > 250000){
-			cout<<"ERROR! Maximum amount to withdraw is ksh250,000.00"<<endl;
+			cout<<"ERROR! Maximum amount to withdraw is KSH 250,000.00"<<endl;
 		}
 		else if(amount > ksh_balance){
             cout<<"ERROR! Insufficient funds!"<<endl;
         }else{
             ksh_balance -= amount;
-            cout<<"Request to withdraw KSH"<<amount<<" to M-Pesa account +254 "<<number<<" completed"<<endl;
+            cout<<"Request to withdraw KSH "<<amount<<" to M-Pesa account +254 "<<number<<" completed"<<endl;
             cout<<"Your request will be fulfilled within 6 to 10 days. Thank you for your patience "<<name<<"."<<endl;
-            cout<<"Current ksh wallet balance: KSH"<<ksh_balance<<endl<<endl;
+            cout<<"Current ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
         }
     }
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 4.2.2"<<endl<<endl;
+	cout<<"Version 4.2.3"<<endl<<endl;
 	bool if_name = true;
 	while(if_name){
 		cout<<"Enter your name: ";

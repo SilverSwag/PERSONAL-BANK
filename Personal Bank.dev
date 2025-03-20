@@ -32,21 +32,21 @@ CompilerSettings=0000000000000000000000000
 UnitCount=1
 
 [VersionInfo]
-Major=3
+Major=4
 Minor=2
-Release=1
-Build=86
+Release=3
+Build=1
 LanguageID=1033
 CharsetID=1252
-CompanyName=PERSONAL BANK
-FileVersion=3.2.1.86
+CompanyName=
+FileVersion=4.2.3.1
 FileDescription=Developed by Ian Omwoyo
-InternalName=Personal Bank
+InternalName=Money app
 LegalCopyright=©2025 Personal Bank
 LegalTrademarks=All rights reserved
 OriginalFilename=Personal Bank
-ProductName=Personal Bank
-ProductVersion=3.2.1.86
+ProductName=Personal money app
+ProductVersion=4.2.3.1
 AutoIncBuildNr=1
 SyncProduct=1
 
