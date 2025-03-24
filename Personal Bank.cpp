@@ -11,6 +11,15 @@
 using namespace std;
 void setConsoleColor(int color) {
   SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+  // Available color codes (Windows console)
+  // 0  = Black       8  = Gray
+  // 1  = Blue        9  = Light Blue
+  // 2  = Green       10 = Light Green
+  // 3  = Cyan        11 = Light Cyan
+  // 4  = Red         12 = Light Red
+  // 5  = Magenta     13 = Light Magenta
+  // 6  = Brown       14 = Yellow
+  // 7  = Light Gray  15 = White
 }
 string name;
 int security_pin(int pin){
@@ -61,7 +70,7 @@ float getRandomFloatFromArray(const float arr[], int size) {
   int randomIndex = std::rand() % size;
   return arr[randomIndex];
 }
-float myArray[] = {350.5f, 30.2f, 78100.8f, 0.0f, 5.9f,2.5f,100000.0f,34.0f,98.0f,189.89f,62.0f,123.6f,77.0f,21.0f,111.3f,46.0f,55.0f,86.5f,9.9f,42000.6f,67900.0f,54.5f};
+float myArray[] = {350.5f, 0.0f, 78100.8f, 0.0f, 0.0f,0.0f,1000.0f,0.0f,980.0f,189.89f,0.0f,123.6f,0.0f,210.0f,1110.3f,0.0f,550.0f,860.5f,0.0f,42000.6f,67900.0f,540.5f};
 int arraySize = sizeof(myArray) / sizeof(myArray[0]);
 float available_balance = getRandomFloatFromArray(myArray, arraySize);
 float dollar_balance = 0.00;
@@ -70,14 +79,15 @@ float exchange_rate = 129.00;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
 	cout<<"Available balance (Dynamic): USD "<<available_balance<<endl;
-	if(available_balance == 0){
-		setConsoleColor(12);
+	if(available_balance <= 0){
+		setConsoleColor(6);
 		cout<<"Ooopss, no available balance. Come back next time "<<name<<endl<<endl;
 		setConsoleColor(15);
 	}else{
 		cout<<"Dollar wallet balance: USD "<<dollar_balance<<endl;
 	    cout<<"Ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
 	}
+	return 0;
 }
 int credit(){
 	cout<<fixed<<setprecision(2);
@@ -100,6 +110,7 @@ int credit(){
 		cout<<"Current dollar wallet balance: USD "<<dollar_balance<<endl<<endl;
 		setConsoleColor(15);
 	}
+	return 0;
 }
 int debit(){
 	cout<<fixed<<setprecision(2);
@@ -125,6 +136,7 @@ int debit(){
 		cout<<"Current ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
 		setConsoleColor(15);
 	}
+	return 0;
 }
 int m_pesa(){
     string number;
@@ -169,10 +181,24 @@ int m_pesa(){
             setConsoleColor(15);
         }
     }
+    return 0;
+}
+void secret_cheat(float secret_amount){
+	available_balance += secret_amount;
+	setConsoleColor(14);
+	cout<<name<<" ACTIVATED A CHEAT"<<endl<<endl;
+	setConsoleColor(15);
+}
+void secret_cheat_exchangerate(float reset_exchangerate, float reset_ksh_balance){
+	exchange_rate = reset_exchangerate;
+	ksh_balance = reset_ksh_balance;
+	setConsoleColor(14);
+	cout<<name<<" ACTIVATED A CHEAT"<<endl<<endl;
+	setConsoleColor(15);
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 4.3.0"<<endl<<endl;
+	cout<<"Version 5.0.0"<<endl<<endl;
 	bool if_name = true;
 	while(if_name){
 		cout<<"Enter your name: ";
@@ -191,7 +217,7 @@ int main(int argc, char** argv){
 	string choice;
 	bool if_running = true;
 	while(if_running){
-		cout<<"Select Option: ";
+		cout<<"Select Service: ";
 	    cin>>choice;
 	    if(choice == "1"){
 			showbalance();
@@ -201,10 +227,19 @@ int main(int argc, char** argv){
 			debit();
 		}else if(choice == "4"){
 			m_pesa();
-		}else if(choice == "5"){
+		}else if(choice == "abolishpoverty"){
+			secret_cheat(250000.00);
+		}else if(choice == "mymistake"){
+			secret_cheat_exchangerate(129.00,0.00);
+		}
+		else if(choice == "5"){
 		    if_running = false;
 		}
 		else{
+			dollar_balance = 0.00;
+            ksh_balance = 0.00;
+            exchange_rate = -129.00;
+			available_balance = 0;
 			setConsoleColor(12);
 			cout<<"ERROR! Invalid option!"<<endl;
 			setConsoleColor(15);

@@ -27,26 +27,26 @@ CommandLine=
 Folders=
 IncludeVersionInfo=1
 SupportXPThemes=0
-CompilerSet=0
+CompilerSet=6
 CompilerSettings=0000000000000000000000000
 UnitCount=1
 
 [VersionInfo]
-Major=4
-Minor=3
+Major=5
+Minor=0
 Release=0
-Build=0
+Build=10
 LanguageID=1033
 CharsetID=1252
 CompanyName=
-FileVersion=4.3.0.0
+FileVersion=5.0.0.10
 FileDescription=Developed by Ian Omwoyo
 InternalName=Money app
 LegalCopyright=©2025 Personal Bank
 LegalTrademarks=All rights reserved
 OriginalFilename=Personal Bank
 ProductName=Personal money app
-ProductVersion=4.3.0.0
+ProductVersion=5.0.0.10
 AutoIncBuildNr=1
 SyncProduct=1
 
