@@ -70,18 +70,19 @@ float getRandomFloatFromArray(const float arr[], int size) {
   int randomIndex = std::rand() % size;
   return arr[randomIndex];
 }
-float myArray[] = {350.5f, 0.0f, 78100.8f, 0.0f, 0.0f,0.0f,1000.0f,0.0f,980.0f,189.89f,0.0f,123.6f,0.0f,210.0f,1110.3f,0.0f,550.0f,860.5f,0.0f,42000.6f,67900.0f,540.5f};
+float myArray[] = {350.5f, 0.0f, 1900.8f, 0.0f, 0.0f,0.0f,1000.0f,0.0f,980.0f,189.89f,0.0f,123.6f,0.0f,210.0f,1110.3f,0.0f,550.0f,860.5f,0.0f,1200.6f,1790.0f,540.5f};
 int arraySize = sizeof(myArray) / sizeof(myArray[0]);
 float available_balance = getRandomFloatFromArray(myArray, arraySize);
 float dollar_balance = 0.00;
 float ksh_balance = 0.00;
-float exchange_rate = 129.00;
+float exchange_rate = 130.89;
+float for_cheat_rate = exchange_rate;
 int showbalance(){
 	cout<<fixed<<setprecision(2);
 	cout<<"Available balance (Dynamic): USD "<<available_balance<<endl;
 	if(available_balance <= 0){
 		setConsoleColor(6);
-		cout<<"Ooopss, no available balance. Come back next time "<<name<<endl<<endl;
+		cout<<"Ooopss, no available funds. Come back later "<<name<<endl<<endl;
 		setConsoleColor(15);
 	}else{
 		cout<<"Dollar wallet balance: USD "<<dollar_balance<<endl;
@@ -102,7 +103,8 @@ int credit(){
 		setConsoleColor(12);
 		cout<<"ERROR! Invalid input!"<<endl;
 		setConsoleColor(15);
-	}else{
+	}
+	else{
 		dollar_balance += credit_amount;
 		available_balance -= credit_amount;
 		setConsoleColor(10);
@@ -143,10 +145,7 @@ int m_pesa(){
     float amount;
     cout<<"Enter your phone number (Double check if you have entered the intended number before proceeding): Kenya +254 ";
     cin>>number;
-    if(number.length() != 9 || !isdigit(number[0]) || !isdigit(number[1]) || !isdigit(number[2]) || 
-        !isdigit(number[3]) || !isdigit(number[4]) || !isdigit(number[5]) || 
-        !isdigit(number[6]) || !isdigit(number[7]) || !isdigit(number[8]))
-	{
+    if(number.length() != 9 || !isdigit(number[0]) || !isdigit(number[1]) || !isdigit(number[2]) || !isdigit(number[3]) || !isdigit(number[4]) || !isdigit(number[5]) || !isdigit(number[6]) || !isdigit(number[7]) || !isdigit(number[8])){
 		setConsoleColor(12);
         cout<<"ERROR! Invalid phone number!"<<endl;
         setConsoleColor(15);
@@ -178,6 +177,8 @@ int m_pesa(){
             cout<<"Request to withdraw KSH "<<amount<<" to M-Pesa account +254 "<<number<<" completed"<<endl;
             cout<<"Your request will be fulfilled within 6 to 10 days. Thank you for your patience "<<name<<"."<<endl;
             cout<<"Current ksh wallet balance: KSH "<<ksh_balance<<endl<<endl;
+            setConsoleColor(6);
+            cout<<"To successfully recieve your funds, make sure your funds does not exceed the limit of which M-pesa can hold!"<<endl<<endl;
             setConsoleColor(15);
         }
     }
@@ -186,19 +187,19 @@ int m_pesa(){
 void secret_cheat(float secret_amount){
 	available_balance += secret_amount;
 	setConsoleColor(14);
-	cout<<name<<" ACTIVATED A CHEAT"<<endl<<endl;
+	cout<<"HOLY SHIT "<<name<<"!! YOU JUST FOUND THE SECRET TO WEALTH"<<endl<<endl;
 	setConsoleColor(15);
 }
 void secret_cheat_exchangerate(float reset_exchangerate, float reset_ksh_balance){
 	exchange_rate = reset_exchangerate;
 	ksh_balance = reset_ksh_balance;
 	setConsoleColor(14);
-	cout<<name<<" ACTIVATED A CHEAT"<<endl<<endl;
+	cout<<"IT IS ALWAYS ETHICAL TO ACCEPT YOUR MISTAKES "<<name<<endl<<endl;
 	setConsoleColor(15);
 }
 int main(int argc, char** argv){
 	cout<<"Copyright 2025 PERSONAL BANK: Financial benefits"<<endl;
-	cout<<"Version 5.0.0"<<endl<<endl;
+	cout<<"Version 5.0.1"<<endl<<endl;
 	bool if_name = true;
 	while(if_name){
 		cout<<"Enter your name: ";
@@ -228,9 +229,9 @@ int main(int argc, char** argv){
 		}else if(choice == "4"){
 			m_pesa();
 		}else if(choice == "abolishpoverty"){
-			secret_cheat(250000.00);
+			secret_cheat(1900.00);
 		}else if(choice == "mymistake"){
-			secret_cheat_exchangerate(129.00,0.00);
+			secret_cheat_exchangerate(for_cheat_rate,0.00);
 		}
 		else if(choice == "5"){
 		    if_running = false;
@@ -238,8 +239,8 @@ int main(int argc, char** argv){
 		else{
 			dollar_balance = 0.00;
             ksh_balance = 0.00;
-            exchange_rate = -129.00;
-			available_balance = 0;
+            exchange_rate = (-for_cheat_rate);  
+			available_balance = 0.00;
 			setConsoleColor(12);
 			cout<<"ERROR! Invalid option!"<<endl;
 			setConsoleColor(15);

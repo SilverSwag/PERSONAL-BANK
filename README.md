@@ -7,3 +7,6 @@ Persona Bank is a digital money platform designed to provide user with money who
 ## PIN
 
 - **The pin is**: 5643
+
+## NOTE
+Only supported on windows OS. 

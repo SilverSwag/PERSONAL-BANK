@@ -34,19 +34,19 @@ UnitCount=1
 [VersionInfo]
 Major=5
 Minor=0
-Release=0
-Build=10
+Release=1
+Build=3
 LanguageID=1033
 CharsetID=1252
 CompanyName=
-FileVersion=5.0.0.10
+FileVersion=5.0.1.3
 FileDescription=Developed by Ian Omwoyo
 InternalName=Money app
 LegalCopyright=©2025 Personal Bank
 LegalTrademarks=All rights reserved
 OriginalFilename=Personal Bank
 ProductName=Personal money app
-ProductVersion=5.0.0.10
+ProductVersion=5.0.1.3
 AutoIncBuildNr=1
 SyncProduct=1
 
